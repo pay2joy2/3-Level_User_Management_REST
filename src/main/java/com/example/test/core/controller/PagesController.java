@@ -15,7 +15,7 @@ public class PagesController {
     public String Homepage(Model model)
     {
         model.addAttribute("alluserlist", userServicImpl.fetchUserList());
-        return "baba";
+        return "HomePage";
     }
     @PostMapping(value = "/addPostman")
     @ResponseBody
