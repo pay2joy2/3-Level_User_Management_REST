@@ -7,5 +7,6 @@ import java.util.List;
 public interface UserService {
     List<User> fetchUserList();
     User addUser(User user);
-    User getId(int Id);
+    User getId(int id);
+    void DeleteId(int id);
 }

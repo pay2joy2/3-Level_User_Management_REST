@@ -28,11 +28,17 @@ public class UserServiceImpl implements UserService{
         {
             user = optional.get();
             return user;
-        }else {
+        } else {
             throw new RuntimeException(
                     "User not found by id" + id);
         }
     }
+
+    @Override
+    public void DeleteId(int id) {
+        userRepository.deleteById(id);
+    }
+
     public User addUser(User user)
     {
         return userRepository.save(user);
