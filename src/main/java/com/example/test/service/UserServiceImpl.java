@@ -7,7 +7,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -20,8 +19,7 @@ public class UserServiceImpl implements UserService{
         return (List<User>)
                 userRepository.findAll(Sort.by("lastname"));
     }
-    public User getId(int id)
-    {
+    public User getId(int id) {
         Optional<User> optional = userRepository.findById(id);
         User user = null;
         if(optional.isPresent())
@@ -39,8 +37,7 @@ public class UserServiceImpl implements UserService{
         userRepository.deleteById(id);
     }
 
-    public User addUser(User user)
-    {
+    public User addUser(User user) {
         return userRepository.save(user);
     }
 }

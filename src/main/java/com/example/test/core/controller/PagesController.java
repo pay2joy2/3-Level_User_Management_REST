@@ -17,9 +17,9 @@ public class PagesController {
         model.addAttribute("alluserlist", userServicImpl.fetchUserList());
         return "HomePage";
     }
-    @PostMapping(value = "/addPostman")
+    @PostMapping(value = "/addPostman") //Endpoint for Postman experiments
     @ResponseBody
-    public User postadd(@RequestBody User user)
+    public User PostmanAdd(@RequestBody User user)
     {
         return userServicImpl.addUser(user);
     }
@@ -34,8 +34,6 @@ public class PagesController {
     @PostMapping("/save")
     public String create(@ModelAttribute("user") User user)
     {
-        System.out.println(user.getId());
-        System.out.println(user.getName());
         userServicImpl.addUser(user);
         return "redirect:/";
     }
