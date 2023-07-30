@@ -28,10 +28,13 @@ public class UserServiceImpl implements UserService{
             return user;
         } else {
             throw new RuntimeException(
-                    "User not found by id" + id);
+                    "User not found by id " + id);
         }
     }
-
+    public List<User> search(String keyword)
+    {
+        return userRepository.findByKeyword(keyword);
+    }
     @Override
     public void DeleteId(int id) {
         userRepository.deleteById(id);

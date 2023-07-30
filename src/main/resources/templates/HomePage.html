@@ -13,6 +13,12 @@
 
   <h3>Список пользователей</h3>
   <a th:href="@{/add}" class="btn btn-primary btn-sm mb-3" >Добавить пользователя</a>
+
+  <form th:action="@{/search}" method="get">
+    <input type="text" name="keyword" th:value="${keyword}"  placeholder="Поиск" size="50" >
+    <button type="submit" class="btn btn-info" > Найти </button>
+  </form>
+  <p></p>
   <table style="width:80%" border="1"
          class = "table table-striped table-responsive-md">
     <thead>

@@ -7,15 +7,24 @@ import com.example.test.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class PagesController {
     @Autowired
     UserServiceImpl userServicImpl;
-    @GetMapping("/")
-    public String Homepage(Model model)
+    @GetMapping({"/", "/search"})
+    public String Homepage(Model model, String keyword)
     {
-        model.addAttribute("alluserlist", userServicImpl.fetchUserList());
-        return "HomePage";
+        if (keyword != null)
+        {
+            List<User> list = userServicImpl.search(keyword);
+            model.addAttribute("alluserlist", list);
+        } else {
+            model.addAttribute("alluserlist", userServicImpl.fetchUserList());
+        }
+            return "HomePage";
+
     }
     @PostMapping(value = "/addPostman") //Endpoint for Postman experiments
     @ResponseBody
